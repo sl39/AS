@@ -1,35 +1,40 @@
 import sys
 sys.stdin = open("input.txt")
 
-for i in range(1, 11):
-    num = int(input())
-    ls = list(map(int,input().split()))
-    lenth = len(ls)
- 
-    while num > 0:
-        M = 0
-        Mj = 0
-        m = 100
-        mj = 0
-        for j in range(lenth):
-            if ls[j] > M:
-                M = ls[j]
-                Mj = j
- 
-            if ls[j] < m:
-                m = ls[j]
-                mj = j
-        if m == M:
-            break
-        else:
-            ls[Mj] -= 1
-            ls[mj] += 1
-        num -= 1
-    maxx = 0
-    mini = 100
-    for j in ls:
-        if maxx < j:
-            maxx = j
-        if mini > j:
-            mini = j
-    print(f"#{i}",maxx- mini)
+for k in range(1, 11):
+    flatten_try = int(input())
+    height = list(map(int, input().split()))
+
+
+    for i in range(flatten_try):
+        idx_max = 0
+        idx_min = 0
+        result_max = height[0]
+        for num in range(1, len(height)):
+            if result_max < height[num]:
+                result_max = height[num]
+                idx_max = num
+        height[idx_max] -= 1
+
+        result_min = height[0]
+        for num in range(1, len(height)):
+            if result_min > height[num]:
+                result_min = height[num]
+                idx_min = num
+        height[idx_min] += 1
+    
+    result_max = 0
+    for num in range(1, len(height)):
+        if result_max < height[num]:
+            result_max = height[num]
+
+
+    
+    result_min = 100
+    result_min = height[0]
+    for num in range(1, len(height)):
+        if result_min > height[num]:
+            result_min = height[num]
+
+
+    print(result_max - result_min)
