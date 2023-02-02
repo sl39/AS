@@ -13,9 +13,9 @@ for i in range(1, 11):
     ls = list(map(int,input().split()))
     lenth = len(ls)
 
-    while num <  0:              # 횟수가 끝날때까지
-        M = 0                   # 최댓값을 넣을 M
-        Mj = 0                  # 최댓값의 위치 Mj
+    while num >  0:             
+        M = 0                 
+        Mj = 0                  
         m = 100                 # 최솟값을 넣을 m
         mj = 0                  # 최대값의 위치 mj
         for j in range(lenth):
