@@ -1,16 +1,13 @@
-p = list(range(1,10))
+p = list(range(5))
 N = len(p)
-key = 3
+
 
 chosen = [1] * N
 
-cnt = 0
 
 def f(i, k, res):
-    global cnt
     if i == k:
         print(res)
-        cnt += 1
         return
     for j in range(N):
         if chosen[j]:
@@ -19,5 +16,3 @@ def f(i, k, res):
             chosen[j] = 1
 
 f(0,3,[])
-print(cnt)
-print(72*7)

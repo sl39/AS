@@ -1,34 +1,20 @@
 import sys
 sys.stdin = open("sample_input.txt")
 
-
-def result(start,end):
-    if rsp[start] == rsp[end]:
-        return start
-    elif rsp[start] == 1:
-        if rsp[end] == 2:
-            return end
-        else:
-            return start
-    elif rsp[start] == 2:
-        if rsp[end] == 3:
-            return end
-        else:
-            return start
+ls = [0,3,1,2]
+def result(start,end):                          ## 두 점의 가위바위보를 구하는 함수
+    if ls[rsp[end]] == rsp[start]:
+        return end
     else:
-        if rsp[end] == 1:
-            return end
-        else:
-            return start
+        return start
 
 
 def r(start,end):
-    if start == end:
-        return start
-    elif end - start == 1:
-        return result(start,end)
+    if start == end:                ## 만약에 시작과 끝이 같다면 
+        return start                ## start 를 리턴
     else:
-        return result(r(start,(start+end)//2),r((start+end)//2+1,end))
+        return result(r(start,(start+end)//2),r((start+end)//2+1,end))  ## 아니라면 다른 두 그룹에서 이기고 올라온 애들을 싸움시킨애를 리턴
+
 
 
 TC = int(input())

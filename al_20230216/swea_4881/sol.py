@@ -3,8 +3,8 @@ sys.stdin = open("sample_input.txt")
 
 def permutation(i,n,s):
     global chosen, myx
-    if s >= myx:
-        return
+    # if s >= myx:
+    #     return
     if i == n:
         if s < myx:
             myx = s
