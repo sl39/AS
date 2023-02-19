@@ -1,28 +1,29 @@
 import sys
 sys.stdin = open("sample_input.txt")
-from collections import deque
-
-dx = [1,-1,0,0]
-dy = [0,0,1,-1]
 
 TC = int(input())
 for T in range(1,TC+1):
-    mat = []
     n,m = map(int,input().split())
+    mat = [list(map(int,input().split())) for i in range(n)]
+    t = 0
+    houses = []
     for i in range(n):
-        mat.append(list(map(int,input().split)))
-    
-    houses = deque([])
-
-    for i in range(n):
-        for j in range(m):
+        for j in range(n):
             if mat[i][j] == 1:
-                mat[i][j] = m - 1
                 houses.append((i,j))
     
-    while houses:
-        h = houses.popleft()
-
-
-cost = 1 + 2*(k-1)*k
+    t = 1
+    myx = 1
+    while t < 2*n:
+        for i in range(n):
+            for j in range(n):
+                mx = 0
+                for k in houses:
+                    x,y = k
+                    if abs(i-x) + abs(y-j) <= t:
+                        mx += 1
+                if mx*m >= (t+1)**2 + t**2:
+                    myx = max(mx,myx)
+        t += 1
+    print(f"#{T}",myx)
 
